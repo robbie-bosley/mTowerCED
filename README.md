@@ -30,6 +30,7 @@ We have to convert to CalorimeterHits in order to use the visualisation software
     bash$ python MakeCaloHitsFromRaw.py rawhits.slcio calohits.slcio
 
 2) The quick route, for if you want to minimise the time needed to do the conversion, is to simply convert straight from ROOT format to CalorimeterHits:
+
   a) Convert from ROOT to CalorimeterHits:
   
     bash$ python MakeCaloHitsFromROOT.py input.root calohits.slcio
