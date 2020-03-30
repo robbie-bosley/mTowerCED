@@ -20,6 +20,7 @@ These hits are stored in LCIO files (with the .slcio extension)
 We have to convert to CalorimeterHits in order to use the visualisation software. We have two routes available to us:
 
 1) The comprehensive route is to convert to RawCalorimeterHits, store these hits in one LCIO file, then convert to CalorimeterHits from there, so that we don't have to do the conversion again if the geometry structure changes for whatever reason. This is done as follows:
+
   a) Convert from ROOT to RawCalorimeterHits:
   
     bash$ python MakeRawCaloHits.py input.root rawhits.slcio
