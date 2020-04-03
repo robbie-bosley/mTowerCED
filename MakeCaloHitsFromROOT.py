@@ -131,8 +131,8 @@ def convert_to_calorimeterevent( inputFileName, outputFileName, Row2X_lut_left, 
 
         #create a new event
         newEvent = IMPL.LCEventImpl()
-        newEvent.setEventNumber( oldEvent.getEventNumber() )
-        newEvent.setRunNumber( oldEvent.getRunNumber() )
+        newEvent.setEventNumber( Event )
+        newEvent.setRunNumber( Run )
         
         #Create a new collection to add to the new events, now made from CalorimeterHits.
         CaloHits = IMPL.LCCollectionVec( EVENT.LCIO.CALORIMETERHIT )
@@ -153,12 +153,12 @@ def convert_to_calorimeterevent( inputFileName, outputFileName, Row2X_lut_left, 
 
             #get x, y and z.
             if (IsLeft[chipID]) :
-                x = Row2X_lut_left[row[j]]
-                y = Column2Y_lut_left[column[j]]
+                x = Row2X_lut_left[Row[j]]
+                y = Column2Y_lut_left[Column[j]]
 
             else :
-                x = Row2X_lut_right[row[j]]
-                y = Column2Y_lut_right[column[j]]
+                x = Row2X_lut_right[Row[j]]
+                y = Column2Y_lut_right[Column[j]]
                 
             z = Z_lut[chipID]
 
@@ -209,7 +209,7 @@ if (len(sys.argv) != 3):
     print "Script has the format 'python MakeCaloHitsFromROOT.py >inputfile.root< >outputfile.slcio<'"
     sys.exit(0)
 
-touchcommand = "touch " + str(argv[2])
+touchcommand = "touch " + str(sys.argv[2])
 os.system(touchcommand)
 
 #check that all the arguments exist as files

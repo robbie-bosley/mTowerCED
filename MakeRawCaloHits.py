@@ -93,7 +93,7 @@ if (len(sys.argv) != 3):
     print "Script has the format 'python MakeRawCaloHits.py >inputfile.root< >outputfile.slcio<'"
     sys.exit(0)
     
-touchcommand = "touch " + str(argv[2])
+touchcommand = "touch " + str(sys.argv[2])
 os.system(touchcommand)
     
 #check that all the arguments exist as files
