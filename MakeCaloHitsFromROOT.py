@@ -76,14 +76,16 @@ yw = 1024*pixelsize
 #Create look up tables for x, both for chips on the left and right
 for i in range (512) :
     x = (i*pixelsize)+bump
-    Row2X_lut_left.append(x - xw)
-    Row2X_lut_right.append(xw - x)
+    #Row2X_lut_left.append(x - xw)
+    #Row2X_lut_right.append(xw - x)
+    Row2X_lut_left.append( -x )
+    Row2X_lut_right.append( x )
 
 #Create look up tables for y, both
 for i in range (1024) :
     y = (i*pixelsize)+bump
-    Column2Y_lut_left.append((yw/2) - y)
-    Column2Y_lut_right.append(y - (yw/2))
+    Column2Y_lut_right.append((yw/2) - y)
+    Column2Y_lut_left.append(y - (yw/2))
 
 #Initialise z look up table using layer and 
 W_thickness = 3.5 #mm
@@ -116,7 +118,11 @@ def convert_to_calorimeterevent( inputFileName, outputFileName, Row2X_lut_left, 
 
     #loop over all entries in the tree
     for i in range (0, tree.GetEntries()) :
+        if index>=10:
+            break
+        
         index += 1.
+           
         tree.GetEntry(i)
         Lane = tree.lane           #vector
         Row =  tree.row            #vector

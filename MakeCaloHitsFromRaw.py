@@ -4,7 +4,7 @@ from pyLCIO import EVENT, IMPL, IOIMPL, UTIL
 import pyLCIO
 from pyLCIO.io.LcioReader import LcioReader
 import numpy as np
-import sys
+import sys, os
 
 # MakeCaloHitsFromRaw.py
 # Takes an LCIO file of RawCalorimeterHits and converts them to CalorimeterHits, then output to a separate LCIO file.
@@ -75,14 +75,14 @@ yw = 1024*pixelsize
 #Create look up tables for x, both for chips on the left and right
 for i in range (512) :
     x = (i*pixelsize)+bump
-    Row2X_lut_left.append(x - xw)
-    Row2X_lut_right.append(xw - x)
+    Row2X_lut_left.append( -x )
+    Row2X_lut_right.append( x )
 
 #Create look up tables for y, both
 for i in range (1024) :
     y = (i*pixelsize)+bump
-    Column2Y_lut_left.append((yw/2) - y)
-    Column2Y_lut_right.append(y - (yw/2))
+    Column2Y_lut_right.append((yw/2) - y)
+    Column2Y_lut_left.append(y - (yw/2))
 
 #Initialise z look up table using layer and 
 W_thickness = 3.5 #mm
@@ -110,6 +110,9 @@ def convert_to_calorimeterevent( inputFileName, outputFileName, Row2X_lut_left, 
     q = int(0)
     
     for oldEvent in reader:
+        if index>=10:
+            break
+
         index += 1.
 
         #create a new event and copy its parameters

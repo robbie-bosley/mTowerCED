@@ -2,6 +2,7 @@ from ROOT import TCanvas, TPad, TFile, TPaveLabel, TPaveText
 from ROOT import TTree, TBranch, TLeaf, TH1, TH2, TF1, TH1F, TH2F, TGraph, TGraphErrors
 from pyLCIO import EVENT, IMPL, IOIMPL, UTIL
 import numpy as np
+import sys, os
 
 # MakeRawCaloHits.py
 # Takes a root file hits and converts them to RawCalorimeterHits, then output to an LCIO file.
@@ -74,7 +75,7 @@ def getinfo(inputfilename, outputfilename) :
         writer.writeEvent( LCEvent )      
 
         # ++ print percentage of progress (but not too often!)
-        p = int((float(i)/float(nentries))*100)
+        p = int((float(i)/float(tree.GetEntries()))*100)
         progress = str(p)+'%'
         if (p != q) :
             print "Progress:", progress
@@ -104,10 +105,11 @@ for arg in sys.argv[1:]:
         print "Can't open", arg
     else:
         print "found", arg
-        f.close(
-
+        f.close()
+            
 #run the conversion to RawCalorimeterHits
 getinfo(str(sys.argv[1]), str(sys.argv[2]))
+
 print "Done!"
     
 print "Press ENTER to exit"
