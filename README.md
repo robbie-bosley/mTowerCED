@@ -7,7 +7,16 @@ Firstly, you will need to initialise ILCSoft. You can do this either by using th
 or by finding the build of ILCSoft you want in cvmfs:
 
     bash$ source /cvmfs/clicdp.cern.ch/path/to/ilcsoft/initilcsoft.sh
-  
+    
+    
+If you already have a converted file of CalorimeterHits (such as calohits.slcio herein) then you may start up CED Viewer immediately, using the ced2go function:
+
+    bash$ ced2go -d mTower_geo/mTower_HEAD_multilayer_no_W.xml calohits.slcio
+    
+Where -d [xml] gives the path to the detector geometry impementation - in this case, the 24-layer mTower with no implemented Tungsten.
+
+# Converting from ROOT to LCIO format:
+
 Copy the root file with the data you want to visualise in it.
 
     bash$ cp /path/to/root/file/input.root ./
