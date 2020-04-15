@@ -6,7 +6,7 @@ Firstly, you will need to initialise ILCSoft. You can do this either by using th
     
 or by finding the build of ILCSoft you want in cvmfs:
 
-    bash$ source ls /cvmfs/clicdp.cern.ch/iLCSoft/builds/2020-02-07/x86_64-slc6-gcc7-opt/init_ilcsoft.sh
+    bash$ source /cvmfs/clicdp.cern.ch/iLCSoft/builds/2020-02-07/x86_64-slc6-gcc7-opt/init_ilcsoft.sh
     
     
 If you already have a converted file of CalorimeterHits (such as calohits.slcio herein) then you may start up CED Viewer immediately, using the ced2go function:
