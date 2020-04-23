@@ -110,8 +110,8 @@ def convert_to_calorimeterevent( inputFileName, outputFileName, Row2X_lut_left, 
     q = int(0)
     
     for oldEvent in reader:
-        if index>=10:
-            break
+        #if index>=10:
+        #    break
 
         index += 1.
 
