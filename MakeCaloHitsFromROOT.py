@@ -118,8 +118,8 @@ def convert_to_calorimeterevent( inputFileName, outputFileName, Row2X_lut_left, 
 
     #loop over all entries in the tree
     for i in range (0, tree.GetEntries()) :
-        if index>=10:
-            break
+        #if index>=10:
+        #    break
         
         index += 1.
            
