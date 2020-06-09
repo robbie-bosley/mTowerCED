@@ -26,7 +26,7 @@ By default, ced2go does not run the processor 'MyEventSelector' which is used to
 
 So in order to view only events 3, 6 and 7 from calohits.slcio (which is from Run 1252):
 
-    bash$ ced2go -d mTower_geo/mTwoer_HEAD_multilayer_no_W.xml -t ./ced2go-tmeplate-DD4.xml --MyEventSelector.EventList=='3 1252 6 1252 7 1252'
+    bash$ ced2go -d mTower_geo/mTwoer_HEAD_multilayer_no_W.xml -t ./ced2go-template-DD4.xml --MyEventSelector.EventList=='3 1252 6 1252 7 1252'
 
 
 # Converting from ROOT to LCIO format:
