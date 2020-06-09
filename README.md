@@ -1,5 +1,7 @@
 # mTowerCED
 
+# Quick Example
+
 Firstly, you will need to initialise ILCSoft. You can do this either by using the provided initialisation script:
 
     bash$ source initilcsoft.sh
@@ -14,6 +16,18 @@ If you already have a converted file of CalorimeterHits (such as calohits.slcio 
     bash$ ced2go -d mTower_geo/mTower_HEAD_multilayer_no_W.xml calohits.slcio
     
 Where -d [xml] gives the path to the detector geometry impementation - in this case, the 24-layer mTower with no implemented Tungsten.
+
+# Custom Event Selection
+
+By default, ced2go does not run the processor 'MyEventSelector' which is used to define a specific event selection. A modified template steering file, ced2go-template-DD4.xml, includes MyEventSelector as part of the executed processors, so you can now define a custom selection. There are two runtime options you will need to add to your execution of ced2go:
+
+-t ./ced2go-template-DD4.xml               This line calls the template file, allowing you to access the MyEventSelector Processor.
+--MyEventSelector.EventList==<selection>   This line lets you alter the selection of events you want to view. These must be a list with the format "EventNumber RunNumber EventNumber RunNumber..."
+
+So in order to view only events 3, 6 and 7 from calohits.slcio (which is from Run 1252):
+
+    bash$ ced2go -d mTower_geo/mTwoer_HEAD_multilayer_no_W.xml -t ./ced2go-tmeplate-DD4.xml --MyEventSelector.EventList=='3 1252 6 1252 7 1252'
+
 
 # Converting from ROOT to LCIO format:
 
